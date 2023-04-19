@@ -1,0 +1,25 @@
+# random.seed 1234567890
+simulation.cycles 100
+simulation.shuffle
+
+overlay.size 1000
+overlay.maxsize 100000
+protocol.0 newscast.SimpleNewscast
+protocol.0.cache 20
+
+init.0 peersim.dynamics.WireRegularRandom
+init.0.protocol 0
+init.0.degree 20
+
+observer.0 peersim.reports.GraphStats
+observer.0.nl -1
+observer.0.nc -1
+observer.0.protocol 0
+observer.0.undir
+
+observer.1 peersim.reports.DegreeStats
+observer.1.protocol 0
+observer.1.method stats
+
+observer.2 org.example.QuotaObserver
+#observer.2.yourparameter(s)
