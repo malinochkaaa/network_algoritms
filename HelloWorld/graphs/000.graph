@@ -1,4 +1,4 @@
-// Sat Apr 29 11:32:44 MSK 2023 
+// Sat Apr 29 11:30:54 MSK 2023 
 graph random { ratio="fill"; margin=0; 
    0 -- 441 [dir=both, cost=-1];
    0 -- 489 [dir=both, cost=-1];
