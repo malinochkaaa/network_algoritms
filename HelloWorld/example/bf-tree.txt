@@ -32,7 +32,7 @@ control.do DVObserver
 control.do.protocol dvp
 
 # Graph Observer
-control.gp org.example.bellman_ford.BFGraphPrinter
+control.gp org.example.GraphPrinter
 control.gp.protocol dvp
 control.gp.outf graphs/
 control.gp.undir

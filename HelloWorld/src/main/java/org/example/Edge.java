@@ -19,7 +19,9 @@ public class Edge implements Comparable<Edge>{
 	public long destination;			//destination node ID
 	public int cost;
 
-	
+	public int availableIn = 0;
+	public long nodeIdAssosiated;
+
 	/**
 	 * A constructor.
 	 * @param source

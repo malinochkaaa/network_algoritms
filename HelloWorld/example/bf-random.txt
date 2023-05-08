@@ -24,15 +24,15 @@ init.ci.linkable link
 include.init rnd ci
 
 # Protocol
-protocol.dvp org.example.bellman_ford.BellmanFordProtocol
+protocol.dvp org.example.algorithms.BellmanFord
 protocol.dvp.linkable link
 
 # Observer
-control.do org.example.bellman_ford.BFObserver
+control.do org.example.Observer
 control.do.protocol dvp
 
 # Graph Observer
-control.gp org.example.bellman_ford.BFGraphPrinter
+control.gp org.example.GraphPrinter
 control.gp.protocol dvp
 control.gp.outf graphs/
 control.gp.undir
