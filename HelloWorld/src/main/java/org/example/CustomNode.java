@@ -8,6 +8,8 @@ public class CustomNode implements Comparable {
     public int availableIn = 0;
     public long assosiateWith = 0;
     public int cost = Integer.MAX_VALUE;
+    public int g = Integer.MAX_VALUE;
+    public int h;
 
     public CustomNode(long nodeId, long assosiateWith, int availableIn) {
         this.nodeId = nodeId;
@@ -17,6 +19,10 @@ public class CustomNode implements Comparable {
     public CustomNode(long nodeId, int cost) {
         this.nodeId = nodeId;
         this.cost = cost;
+    }
+    public CustomNode(int h, long nodeId) {
+        this.nodeId = nodeId;
+        this.h = h;
     }
 
     @Override

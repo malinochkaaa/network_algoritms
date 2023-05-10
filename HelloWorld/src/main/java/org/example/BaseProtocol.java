@@ -1,7 +1,9 @@
 package org.example;
 
+import org.example.algorithms.AStar;
 import org.example.algorithms.BellmanFord;
 import org.example.algorithms.Dijkstra;
+import org.example.algorithms.Greedy;
 import peersim.cdsim.CDProtocol;
 import peersim.cdsim.CDState;
 import peersim.config.FastConfig;
@@ -15,10 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Formatter;
-import java.util.TreeMap;
+import java.util.*;
 
 public abstract class BaseProtocol implements CDProtocol {
 
@@ -33,6 +32,7 @@ public abstract class BaseProtocol implements CDProtocol {
     /* current phase of the protocol */
     protected State phase;
 
+
     protected ArrayList<CustomNode> unavailableNodes = new ArrayList<>();
 
     /**
@@ -43,6 +43,10 @@ public abstract class BaseProtocol implements CDProtocol {
     public BaseProtocol(@SuppressWarnings("unused") String prefix) {
         /* Start in INIT phase */
         this.phase = State.INITIALISE;
+    }
+
+    public ArrayList<Edge> getGraph() {
+        return graph;
     }
 
     /**
@@ -76,8 +80,11 @@ public abstract class BaseProtocol implements CDProtocol {
                 /* Compute shortest paths */
                 long to = generateNodeTo(nodeId);
                 if (to != -1) {
-                    compute(nodeId, to);
-                    sendMessage(nodeId, to);
+                    if (compute(nodeId, to))
+                        sendMessage(nodeId, to);
+                    else {
+                        messagePrint("Path from " + nodeId + " to " + to + " not found.");
+                    }
                 }
             }
         }
@@ -106,6 +113,15 @@ public abstract class BaseProtocol implements CDProtocol {
         this.graph = new ArrayList<>();
         this.paths = new TreeMap<>();
         /* Add neighbours - access neighbours in the Linkable */
+        String filename = "tmp_coords.txt";
+        File f = new File(filename);
+        float x = CDState.r.nextFloat()*500;
+        float y = CDState.r.nextFloat()*500;
+        try {
+            f.createNewFile();
+            Files.write(Paths.get(filename), String.format("%d:%f:%f\n", nodeId, x, y).getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {}
+
         for (int i = 0; i < lnk.degree(); i++) {
             /* Get neighbour's i ID */
             neighborId = lnk.getNeighbor(i).getID();
@@ -140,7 +156,7 @@ public abstract class BaseProtocol implements CDProtocol {
      * Compute shortest path using Bellman-Ford algorithm.
      * @param nodeId Host Node ID.
      */
-    protected abstract void compute(long nodeId, long to);
+    protected abstract boolean compute(long nodeId, long to);
 
     /**
      * Receives a graph form a neighbour and updates local graph
@@ -229,6 +245,8 @@ public abstract class BaseProtocol implements CDProtocol {
         String msg = "Sending message from " + from + " to " + to + " for " + weight + " cycles... Computing path:";
         messagePrint(msg);
         ArrayList<Long> path = new ArrayList<>();
+        int count = 0;
+        int sumWeight = 0;
         path.add(to);
         long pathLast = to;
         long prevInPath = paths.get(pathLast).predecessor;
@@ -237,6 +255,8 @@ public abstract class BaseProtocol implements CDProtocol {
                 if (edge.source == prevInPath && edge.destination == pathLast) {
                     edge.availableIn = weight;
                     edge.nodeIdAssosiated = from;
+                    sumWeight += edge.cost;
+                    count++;
                 }
             }
             pathLast = prevInPath;
@@ -246,7 +266,8 @@ public abstract class BaseProtocol implements CDProtocol {
                 pathLast = from;
             }
         }
-        path.add(from);
+        if (!path.contains(from))
+            path.add(from);
         for (Edge edge: graph) {
             if (edge.source == from && edge.destination == prevInPath) {
                 edge.availableIn = weight;
@@ -254,6 +275,26 @@ public abstract class BaseProtocol implements CDProtocol {
             }
         }
         Collections.reverse(path);
+        String edgeFile = String.format("graphs/%03d_messages.dat", CommonState.getTime());
+        List<String> list = null;
+        try {
+            java.nio.file.Path tmp = java.nio.file.Path.of("tmp_coords.txt");
+            list = Files.readAllLines(tmp);
+        } catch (IOException e) {}
+        List<String[]> newList = list.stream().map(s -> s.split(":")).toList();
+        File f = new File(edgeFile);
+        try {
+            f.createNewFile();
+            for (int i = 0; i < path.size() - 1; i++) {
+                long cur = path.get(i);
+                long next = path.get(i + 1);
+                java.nio.file.Path filePath = java.nio.file.Path.of(edgeFile);
+
+                Files.write(filePath, String.format("%s %s %d\n", newList.get((int)cur)[1], newList.get((int)cur)[2], cur).getBytes(), StandardOpenOption.APPEND);
+                Files.write(filePath, String.format("%s %s %d\n", newList.get((int)next)[1], newList.get((int)next)[2], next).getBytes(), StandardOpenOption.APPEND);
+                Files.write(filePath, ("\n").getBytes(), StandardOpenOption.APPEND);
+            }
+        } catch (IOException e) {}
         msg = "";
         for (int i = 0 ; i < path.size(); i++) {
             if (i == 0) {
@@ -265,6 +306,12 @@ public abstract class BaseProtocol implements CDProtocol {
                 msg += " " + path.get(i) + " ->";
             }
         }
+        String filename = "tmp.txt";
+        f = new File(filename);
+        try {
+            f.createNewFile();
+            Files.write(Paths.get(filename), String.format("%d:%d", count, sumWeight).getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {}
     }
 
     private void messagePrint(String msg) {
@@ -273,6 +320,10 @@ public abstract class BaseProtocol implements CDProtocol {
             protocolStr = "bellman";
         } else if (this instanceof Dijkstra) {
             protocolStr = "dijkstra";
+        }else if (this instanceof Greedy) {
+            protocolStr = "greedy";
+        }else if (this instanceof AStar) {
+            protocolStr = "a*";
         }
         String filename = String.format("messages/%s%03d.txt", protocolStr, CommonState.getTime());
         File f = new File(filename);

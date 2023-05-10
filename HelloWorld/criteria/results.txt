@@ -1,0 +1,3 @@
+bf-random time:118 memory:65376672 nodes:41.444443
+dij-random time:112 memory:145694656 nodes:47.400002
+a-random time:105 memory:73187408 nodes:86.750000

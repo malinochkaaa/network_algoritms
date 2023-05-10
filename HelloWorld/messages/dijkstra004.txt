@@ -1,278 +1,112 @@
-Sending message from 1 to 275 for 3 cycles... Computing path:
-(1 -> 275 -> 275)
-Sending message from 5 to 237 for 1 cycles... Computing path:
-(5 -> 237 -> 237)
-Sending message from 10 to 41 for 2 cycles... Computing path:
-(10 -> 41 -> 41)
-Message from node 14 still in process, 1 cycles left.
-Message to node 244 still in process, 1 cycles left.
-Sending message from 16 to 279 for 3 cycles... Computing path:
-(16 -> 279 -> 279)
-Message from node 18 still in process, 1 cycles left.
-Message to node 414 still in process, 1 cycles left.
-Message from node 19 successfully sent!
-Message to node 344 successfully sent!
-Sending message from 22 to 436 for 3 cycles... Computing path:
-(22 -> 436 -> 436)
-Message from node 24 successfully sent!
-Message to node 292 successfully sent!
-Sending message from 25 to 150 for 1 cycles... Computing path:
-(25 -> 150 -> 150)
-Message from node 26 still in process, 1 cycles left.
-Message to node 300 still in process, 1 cycles left.
-Sending message from 27 to 288 for 3 cycles... Computing path:
-(27 -> 288 -> 288)
-Message from node 28 still in process, 2 cycles left.
-Message to node 53 still in process, 2 cycles left.
-Message from node 29 successfully sent!
-Message to node 235 successfully sent!
-Sending message from 29 to 458 for 1 cycles... Computing path:
-(29 -> 458 -> 458)
-Message from node 33 still in process, 1 cycles left.
-Message to node 105 still in process, 1 cycles left.
-Message from node 35 still in process, 1 cycles left.
-Message to node 459 still in process, 1 cycles left.
-Sending message from 36 to 379 for 2 cycles... Computing path:
-(36 -> 379 -> 379)
-Message from node 38 successfully sent!
-Message to node 386 successfully sent!
-Message from node 44 still in process, 1 cycles left.
-Message to node 75 still in process, 1 cycles left.
-Sending message from 48 to 360 for 3 cycles... Computing path:
-(48 -> 360 -> 360)
-Message from node 54 successfully sent!
-Message to node 132 successfully sent!
-Message from node 58 still in process, 1 cycles left.
-Message to node 159 still in process, 1 cycles left.
-Message from node 59 still in process, 1 cycles left.
-Message to node 347 still in process, 1 cycles left.
-Sending message from 64 to 276 for 3 cycles... Computing path:
-(64 -> 276 -> 276)
-Message from node 65 still in process, 1 cycles left.
-Message to node 269 still in process, 1 cycles left.
-Message from node 69 successfully sent!
-Message to node 46 successfully sent!
-Message from node 79 successfully sent!
-Message to node 353 successfully sent!
-Sending message from 82 to 322 for 1 cycles... Computing path:
-(82 -> 322 -> 322)
-Message from node 83 still in process, 1 cycles left.
-Message to node 192 still in process, 1 cycles left.
-Message from node 84 successfully sent!
-Message to node 146 successfully sent!
-Message from node 87 still in process, 2 cycles left.
-Message to node 470 still in process, 2 cycles left.
-Message from node 89 successfully sent!
-Message to node 348 successfully sent!
-Message from node 103 successfully sent!
-Message to node 297 successfully sent!
-Message from node 106 successfully sent!
-Message to node 492 successfully sent!
-Sending message from 110 to 56 for 1 cycles... Computing path:
-(110 -> 56 -> 56)
-Message from node 116 still in process, 1 cycles left.
-Message to node 191 still in process, 1 cycles left.
-Sending message from 117 to 282 for 1 cycles... Computing path:
-(117 -> 282 -> 282)
-Message from node 121 successfully sent!
-Message to node 403 successfully sent!
-Message from node 123 still in process, 1 cycles left.
-Message to node 405 still in process, 1 cycles left.
-Message from node 131 still in process, 1 cycles left.
-Message to node 216 still in process, 1 cycles left.
-Sending message from 137 to 417 for 1 cycles... Computing path:
-(137 -> 417 -> 417)
-Sending message from 152 to 148 for 2 cycles... Computing path:
-(152 -> 148 -> 148)
-Sending message from 153 to 344 for 1 cycles... Computing path:
-(153 -> 344 -> 344)
-Sending message from 154 to 475 for 1 cycles... Computing path:
-(154 -> 475 -> 475)
-Sending message from 155 to 88 for 2 cycles... Computing path:
-(155 -> 88 -> 88)
-Message from node 158 successfully sent!
-Message to node 182 successfully sent!
-Sending message from 165 to 278 for 1 cycles... Computing path:
-(165 -> 278 -> 278)
-Sending message from 169 to 217 for 2 cycles... Computing path:
-(169 -> 217 -> 217)
-Sending message from 173 to 235 for 1 cycles... Computing path:
-(173 -> 235 -> 235)
-Message from node 176 successfully sent!
-Message to node 287 successfully sent!
-Sending message from 179 to 49 for 3 cycles... Computing path:
-(179 -> 49 -> 49)
-Sending message from 181 to 133 for 3 cycles... Computing path:
-(181 -> 133 -> 133)
-Message from node 184 still in process, 1 cycles left.
-Message to node 430 still in process, 1 cycles left.
-Message from node 186 still in process, 1 cycles left.
-Message to node 402 still in process, 1 cycles left.
-Message from node 194 successfully sent!
-Message to node 340 successfully sent!
-Message from node 195 successfully sent!
-Message to node 368 successfully sent!
-Sending message from 195 to 469 for 2 cycles... Computing path:
-(195 -> 469 -> 469)
-Message from node 196 successfully sent!
-Message to node 401 successfully sent!
-Message from node 201 still in process, 1 cycles left.
-Message to node 453 still in process, 1 cycles left.
-Message from node 202 successfully sent!
-Message to node 228 successfully sent!
-Message from node 203 still in process, 1 cycles left.
-Message to node 440 still in process, 1 cycles left.
-Message from node 209 still in process, 1 cycles left.
+Path from 0 to 339 not found.
+Path from 1 to 53 not found.
+Path from 2 to 459 not found.
+Message from node 3 still in process, 1 cycles left.
+Message to node 358 still in process, 1 cycles left.
+Message from node 6 still in process, 1 cycles left.
+Message to node 319 still in process, 1 cycles left.
+Message from node 10 still in process, 1 cycles left.
+Message to node 417 still in process, 1 cycles left.
+Message from node 15 still in process, 1 cycles left.
+Message to node 152 still in process, 1 cycles left.
+Message from node 17 successfully sent!
+Message to node 440 successfully sent!
+Message from node 22 still in process, 1 cycles left.
+Message to node 195 still in process, 1 cycles left.
+Message from node 27 successfully sent!
+Message to node 407 successfully sent!
+Path from 28 to 156 not found.
+Path from 29 to 165 not found.
+Path from 32 to 414 not found.
+Path from 39 to 482 not found.
+Message from node 41 successfully sent!
+Message to node 128 successfully sent!
+Sending message from 53 to 431 for 3 cycles... Computing path:
+(53 -> 212 -> 423 -> 388 -> 27 -> 352 -> 431)
+Message from node 56 successfully sent!
+Message to node 47 successfully sent!
+Sending message from 56 to 360 for 2 cycles... Computing path:
+(56 -> 63 -> 360)
+Sending message from 57 to 325 for 3 cycles... Computing path:
+(57 -> 416 -> 375 -> 189 -> 283 -> 173 -> 325)
+Sending message from 59 to 307 for 1 cycles... Computing path:
+(59 -> 63 -> 266 -> 92 -> 126 -> 307)
+Message from node 71 still in process, 1 cycles left.
 Message to node 306 still in process, 1 cycles left.
-Message from node 225 successfully sent!
-Message to node 134 successfully sent!
-Message from node 229 still in process, 1 cycles left.
-Message to node 128 still in process, 1 cycles left.
-Sending message from 231 to 396 for 2 cycles... Computing path:
-(231 -> 396 -> 396)
-Message from node 233 successfully sent!
-Message to node 197 successfully sent!
-Message from node 238 still in process, 1 cycles left.
-Message to node 139 still in process, 1 cycles left.
-Sending message from 239 to 318 for 1 cycles... Computing path:
-(239 -> 318 -> 318)
-Message from node 241 successfully sent!
-Message to node 293 successfully sent!
-Message from node 243 still in process, 1 cycles left.
-Message to node 47 still in process, 1 cycles left.
-Message from node 246 still in process, 1 cycles left.
-Message to node 376 still in process, 1 cycles left.
-Message from node 251 still in process, 1 cycles left.
-Message to node 200 still in process, 1 cycles left.
-Message from node 256 successfully sent!
-Message to node 384 successfully sent!
-Message from node 257 successfully sent!
-Message to node 185 successfully sent!
-Message from node 267 successfully sent!
-Message to node 349 successfully sent!
-Sending message from 267 to 261 for 3 cycles... Computing path:
-(267 -> 261 -> 261)
-Sending message from 271 to 220 for 3 cycles... Computing path:
-(271 -> 220 -> 220)
-Message from node 286 successfully sent!
-Message to node 6 successfully sent!
-Sending message from 290 to 230 for 3 cycles... Computing path:
-(290 -> 230 -> 230)
-Message from node 295 still in process, 1 cycles left.
-Message to node 67 still in process, 1 cycles left.
-Message from node 302 still in process, 1 cycles left.
-Message to node 13 still in process, 1 cycles left.
-Message from node 303 successfully sent!
-Message to node 410 successfully sent!
-Message from node 310 successfully sent!
-Message to node 119 successfully sent!
-Message from node 311 still in process, 1 cycles left.
-Message to node 484 still in process, 1 cycles left.
-Message from node 313 successfully sent!
-Message to node 262 successfully sent!
-Message from node 326 still in process, 2 cycles left.
-Message to node 234 still in process, 2 cycles left.
-Message from node 327 still in process, 1 cycles left.
-Message to node 265 still in process, 1 cycles left.
-Sending message from 328 to 422 for 2 cycles... Computing path:
-(328 -> 422 -> 422)
-Message from node 329 still in process, 1 cycles left.
-Message to node 493 still in process, 1 cycles left.
-Sending message from 336 to 77 for 1 cycles... Computing path:
-(336 -> 77 -> 77)
-Message from node 343 still in process, 1 cycles left.
-Message to node 255 still in process, 1 cycles left.
-Sending message from 348 to 107 for 1 cycles... Computing path:
-(348 -> 107 -> 107)
-Sending message from 351 to 68 for 2 cycles... Computing path:
-(351 -> 68 -> 68)
-Message from node 352 still in process, 2 cycles left.
-Message to node 277 still in process, 2 cycles left.
-Message from node 354 successfully sent!
-Message to node 151 successfully sent!
-Message from node 359 successfully sent!
-Message to node 260 successfully sent!
-Message from node 364 successfully sent!
-Message to node 413 successfully sent!
-Message from node 365 still in process, 1 cycles left.
-Message to node 461 still in process, 1 cycles left.
-Message from node 377 successfully sent!
-Message to node 212 successfully sent!
-Message from node 383 successfully sent!
-Message to node 324 successfully sent!
-Message from node 388 still in process, 1 cycles left.
-Message to node 170 still in process, 1 cycles left.
-Message from node 390 still in process, 1 cycles left.
-Message to node 283 still in process, 1 cycles left.
-Message from node 391 successfully sent!
-Message to node 319 successfully sent!
-Sending message from 393 to 337 for 1 cycles... Computing path:
-(393 -> 337 -> 337)
-Message from node 394 successfully sent!
-Message to node 42 successfully sent!
-Message from node 406 still in process, 2 cycles left.
-Message to node 375 still in process, 2 cycles left.
-Message from node 407 successfully sent!
-Message to node 78 successfully sent!
-Message from node 408 still in process, 1 cycles left.
-Message to node 304 still in process, 1 cycles left.
-Message from node 415 still in process, 1 cycles left.
-Message to node 398 still in process, 1 cycles left.
-Message from node 416 still in process, 2 cycles left.
-Message to node 357 still in process, 2 cycles left.
-Message from node 418 still in process, 2 cycles left.
-Message to node 199 still in process, 2 cycles left.
-Message from node 420 still in process, 1 cycles left.
-Message to node 63 still in process, 1 cycles left.
-Message from node 424 still in process, 1 cycles left.
-Message to node 51 still in process, 1 cycles left.
-Sending message from 425 to 321 for 3 cycles... Computing path:
-(425 -> 321 -> 321)
-Message from node 428 still in process, 1 cycles left.
-Message to node 9 still in process, 1 cycles left.
-Message from node 432 still in process, 1 cycles left.
-Message to node 332 still in process, 1 cycles left.
-Sending message from 434 to 494 for 1 cycles... Computing path:
-(434 -> 494 -> 494)
-Message from node 435 successfully sent!
-Message to node 2 successfully sent!
-Message from node 437 still in process, 1 cycles left.
-Message to node 86 still in process, 1 cycles left.
-Message from node 438 successfully sent!
-Message to node 400 successfully sent!
-Sending message from 444 to 232 for 3 cycles... Computing path:
-(444 -> 232 -> 232)
-Message from node 448 successfully sent!
-Message to node 370 successfully sent!
-Sending message from 448 to 108 for 1 cycles... Computing path:
-(448 -> 108 -> 108)
-Message from node 450 still in process, 2 cycles left.
-Message to node 31 still in process, 2 cycles left.
-Message from node 455 still in process, 1 cycles left.
-Message to node 345 still in process, 1 cycles left.
-Sending message from 457 to 106 for 3 cycles... Computing path:
-(457 -> 106 -> 106)
-Message from node 460 successfully sent!
-Message to node 342 successfully sent!
-Message from node 462 successfully sent!
-Message to node 111 successfully sent!
-Message from node 465 still in process, 1 cycles left.
-Message to node 385 still in process, 1 cycles left.
-Message from node 467 successfully sent!
-Message to node 478 successfully sent!
-Sending message from 472 to 225 for 3 cycles... Computing path:
-(472 -> 225 -> 225)
-Message from node 477 successfully sent!
-Message to node 378 successfully sent!
-Sending message from 478 to 366 for 3 cycles... Computing path:
-(478 -> 366 -> 366)
-Message from node 479 still in process, 2 cycles left.
-Message to node 447 still in process, 2 cycles left.
-Message from node 481 still in process, 1 cycles left.
-Message to node 281 still in process, 1 cycles left.
-Message from node 483 still in process, 1 cycles left.
-Message to node 120 still in process, 1 cycles left.
-Sending message from 489 to 499 for 1 cycles... Computing path:
-(489 -> 499 -> 499)
-Sending message from 492 to 215 for 1 cycles... Computing path:
-(492 -> 215 -> 215)
+Sending message from 77 to 118 for 3 cycles... Computing path:
+(77 -> 315 -> 91 -> 338 -> 333 -> 431 -> 259 -> 306 -> 262 -> 370 -> 118)
+Path from 82 to 209 not found.
+Path from 89 to 388 not found.
+Path from 98 to 99 not found.
+Path from 100 to 446 not found.
+Path from 104 to 112 not found.
+Path from 108 to 451 not found.
+Path from 109 to 41 not found.
+Path from 121 to 296 not found.
+Path from 128 to 86 not found.
+Path from 132 to 62 not found.
+Path from 135 to 169 not found.
+Path from 136 to 452 not found.
+Path from 137 to 363 not found.
+Path from 141 to 264 not found.
+Path from 143 to 296 not found.
+Path from 144 to 73 not found.
+Path from 150 to 420 not found.
+Path from 155 to 492 not found.
+Path from 163 to 137 not found.
+Path from 164 to 322 not found.
+Path from 181 to 102 not found.
+Path from 187 to 432 not found.
+Path from 189 to 158 not found.
+Path from 193 to 442 not found.
+Path from 197 to 76 not found.
+Path from 203 to 443 not found.
+Path from 209 to 287 not found.
+Path from 210 to 192 not found.
+Path from 221 to 217 not found.
+Path from 230 to 365 not found.
+Path from 234 to 88 not found.
+Path from 240 to 266 not found.
+Path from 241 to 188 not found.
+Path from 242 to 420 not found.
+Path from 246 to 231 not found.
+Path from 250 to 364 not found.
+Path from 253 to 90 not found.
+Path from 262 to 111 not found.
+Path from 264 to 256 not found.
+Path from 266 to 106 not found.
+Path from 269 to 141 not found.
+Path from 270 to 55 not found.
+Path from 278 to 36 not found.
+Path from 284 to 270 not found.
+Path from 299 to 286 not found.
+Path from 301 to 403 not found.
+Path from 314 to 46 not found.
+Path from 316 to 89 not found.
+Path from 317 to 366 not found.
+Path from 326 to 254 not found.
+Path from 342 to 301 not found.
+Path from 349 to 482 not found.
+Path from 369 to 184 not found.
+Path from 377 to 297 not found.
+Path from 380 to 460 not found.
+Path from 381 to 359 not found.
+Path from 383 to 2 not found.
+Path from 395 to 494 not found.
+Path from 398 to 426 not found.
+Path from 409 to 50 not found.
+Path from 427 to 0 not found.
+Path from 429 to 493 not found.
+Path from 432 to 470 not found.
+Path from 435 to 290 not found.
+Path from 436 to 124 not found.
+Path from 437 to 46 not found.
+Path from 441 to 158 not found.
+Path from 444 to 95 not found.
+Path from 452 to 132 not found.
+Path from 469 to 81 not found.
+Path from 472 to 491 not found.
+Path from 477 to 432 not found.
+Path from 479 to 207 not found.
+Path from 484 to 265 not found.
+Path from 490 to 434 not found.

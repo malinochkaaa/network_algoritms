@@ -1,54 +1,44 @@
-/*
- * Copyright (c) 2018,
- *     University of Reading, Computer science Department
- *     CS2CA17 module - lab sessions
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU,
- * Lesser General Public License version 2 as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU Lesser General Public License for more details.
- */
 package org.example.algorithms;
 
-import org.example.*;
+import org.example.BaseProtocol;
+import org.example.Edge;
+import org.example.Path;
 import peersim.core.Network;
 
+import java.util.Optional;
 
-/**
- * The class implements a network layer Distance-Vector protocol.
- * It is based on the original Link-State protocol class.
- *
- * The protocol broadcast its local graph to all nodes in the network.
- * Each instance of the protocol then computes the shortest path tree using the Bellman-Ford algorithm.
- */
-public class BellmanFord extends BaseProtocol {
-
-    /**
-     * A constructor.
-     *
-     * @param prefix required by PeerSim to access protocol's alias in the configuration file.
-     */
-    public BellmanFord(String prefix) {
+public class FloydWarshall extends BaseProtocol {
+    public FloydWarshall(String prefix) {
         super(prefix);
     }
-
-    /**
-     * Compute shortest path using Bellman-Ford algorithm.
-     * @param nodeId Host Node ID.
-     */
     @Override
     protected boolean compute(long nodeId, long to) {
-        /* Initialise graph */
         for (long i = 0; i < Network.size(); i++) {
             paths.put(i, new Path(i, i, Integer.MAX_VALUE));
         }
         /* Source node costs 0 */
         paths.get(nodeId).cost = 0;
         /* Relax edges repeatedly */
+
+        for (long k = 0; k < Network.size(); k++) {
+            // Pick all vertices as source one by one
+            for (long i = 0; i < Network.size(); i++) {
+                // Pick all vertices as destination for the
+                // above picked source
+                for (long j = 0; j < Network.size(); j++) {
+                    // If vertex k is on the shortest path
+                    // from i to j, then update the value of
+                    // dist[i][j]
+                    /*if (dist[i][k] + dist[k][j]
+                            < dist[i][j])
+                        dist[i][j]
+                                = dist[i][k] + dist[k][j];*/
+                }
+            }
+        }
         for (int i = 0; i < (Network.size() - 1); i++) {
             /* For every edge */
-            for (Edge Edge : graph) {
+            for (org.example.Edge Edge : graph) {
                 if (Edge.availableIn > 0) {
                     continue;
                 }

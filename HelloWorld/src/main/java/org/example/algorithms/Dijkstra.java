@@ -16,9 +16,7 @@ import org.example.CustomNode;
 import org.example.Edge;
 import org.example.Path;
 import peersim.core.Network;
-import peersim.core.Node;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -44,7 +42,7 @@ public class Dijkstra extends BaseProtocol {
     }
 
     @Override
-    protected void compute(long nodeId, long to) {
+    protected boolean compute(long nodeId, long to) {
         pq = new PriorityQueue<>();
         settled = new HashSet<>();
         for (long i = 0; i < Network.size(); i++) {
@@ -60,7 +58,7 @@ public class Dijkstra extends BaseProtocol {
             // Terminating condition check when
             // the priority queue is empty, return
             if (pq.isEmpty())
-                return;
+                return false;
 
             // Removing the minimum distance node
             // from the priority queue
@@ -80,7 +78,7 @@ public class Dijkstra extends BaseProtocol {
 
             e_Neighbours(u);
         }
-
+        return true;
     }
 
     /**
@@ -110,8 +108,10 @@ public class Dijkstra extends BaseProtocol {
                 newDistance = paths.get(v.source).cost + edgeDistance;
 
                 // If new distance is cheaper in cost
-                if (newDistance < paths.get(v.destination).cost)
+                if (newDistance < paths.get(v.destination).cost) {
                     paths.get(v.destination).cost = newDistance;
+                    paths.get(v.destination).predecessor = v.source;
+                }
 
                 // Add the current node to the queue
                 pq.add(new CustomNode(v.destination, paths.get(v.destination).cost));

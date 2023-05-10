@@ -12,11 +12,21 @@
 package org.example;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Formatter;
+import java.util.List;
 
+import com.sun.source.tree.NewArrayTree;
+import org.example.algorithms.AStar;
 import org.example.algorithms.BellmanFord;
 import org.example.algorithms.Dijkstra;
+import org.example.algorithms.Greedy;
+import peersim.cdsim.CDState;
 import peersim.config.Configuration;
 import peersim.config.FastConfig;
 import peersim.core.CommonState;
@@ -37,6 +47,8 @@ public class GraphPrinter extends GraphObserver {
 	
 	private final int pid;
     private String outf;
+
+    private long end_time;
 	/**
 	 * A constructor
 	 * @param prefix a string provided by PeerSim and used to access parameters from the configuration file.
@@ -56,51 +68,85 @@ public class GraphPrinter extends GraphObserver {
         int l=0, m = 0;
         System.out.println( "[" + CommonState.getTime() + "] drawing ... ");
         try {
-            int[] drawn = new int[n];
-            Date date = new Date(System.currentTimeMillis());
-            BaseProtocol protocol = (BaseProtocol) Network.get(0).getProtocol(pid);
-            String protocolStr = "";
-            if (protocol instanceof BellmanFord) {
-                protocolStr = "bellman";
-            } else if (protocol instanceof Dijkstra) {
-                protocolStr = "dijkstra";
-            }
-            String filename = String.format("%s%s%03d.graph", outf, protocolStr, CommonState.getTime() );
-            File f = new File(filename);
-            f.createNewFile();
-            Formatter file = new Formatter(f);
-            file.format("// %s \ngraph random { ratio=\"fill\"; margin=0; \n", date.toString());
+            if (CommonState.getTime() > 2) {
+                int[] drawn = new int[n];
+                Date date = new Date(System.currentTimeMillis());
+                BaseProtocol baseProtocol = (BaseProtocol) Network.get(0).getProtocol(pid);
+                String protocolStr = "";
+                if (baseProtocol instanceof BellmanFord) {
+                    protocolStr = "bellman";
+                } else if (baseProtocol instanceof Dijkstra) {
+                    protocolStr = "dijkstra";
+                }else if (baseProtocol instanceof Greedy) {
+                    protocolStr = "greedy";
+                }else if (baseProtocol instanceof AStar) {
+                    protocolStr = "a*";
+                }
+                String filename = String.format("%s%s%03d.graph", outf, protocolStr, CommonState.getTime());
+                File f = new File(filename);
+                f.createNewFile();
+                Formatter file = new Formatter(f);
+                file.format("// %s \ngraph random { ratio=\"fill\"; margin=0; \n", date.toString());
 
-            for (int i=0; i < n ; i++) {
+                for (int i = 0; i < n; i++) {
 
+                    BaseProtocol protocol = (BaseProtocol) Network.get(i).getProtocol(pid);
 
-            	Linkable link = (Linkable) Network.get(i).getProtocol(FastConfig.getLinkable(pid));
-            	                                
-                for (int j = 0; j < link.degree(); j++) {
-                    long peerId = link.getNeighbor(j).getID();
-                    int cost = -1;
-                    if(protocol.getPaths()!=null && protocol.getPaths().containsKey(peerId))
-                    	cost = protocol.getPaths().get(peerId).cost; 
-                                    	
-                	if(undir) {
-                        m = 0;
-                        while (m < l && peerId != drawn[m]) m++;
-                        if (m < l) continue;
-                        file.format("   %d -- %d [dir=both, cost=%d];\n", i, peerId, cost);
+                    Linkable link = (Linkable) Network.get(i).getProtocol(FastConfig.getLinkable(pid));
+
+                    for (int j = 0; j < link.degree(); j++) {
+                        long peerId = link.getNeighbor(j).getID();
+                        int cost = -1;
+                        if (protocol.getPaths() != null && protocol.getPaths().containsKey(peerId))
+                            cost = protocol.getPaths().get(peerId).cost;
+
+                        if (cost != -1 && cost != Integer.MAX_VALUE) {
+                            if (undir) {
+                                m = 0;
+                                while (m < l && peerId != drawn[m]) m++;
+                                if (m < l) continue;
+                                file.format("   %d -- %d [dir=both, cost=%d];\n", i, peerId, cost);
+                            } else {
+                                file.format("   %d -> %d;\n", i, peerId);
+                            }
+                        }
                     }
-                    else{
-                        file.format("   %d -> %d;\n", i, peerId);
+                    drawn[l++] = (int) Network.get(i).getID();
+                }
+                file.format(" }");
+                /*file.close();
+                String graphFile = String.format("%s%s%03d_points.dat", outf, protocolStr, CommonState.getTime());
+                f = new File(graphFile);
+                f.createNewFile();
+                file = new Formatter(f);
+                for (long node = 0; node < n; node++) {
+                    file.format("%d %f %f\n", node, CDState.r.nextFloat()*500, CDState.r.nextFloat()*500);
+                }
+                file.close();*/
+                String edgeFile = String.format("%s%s%03d_edges.dat", outf, protocolStr, CommonState.getTime());
+                f = new File(edgeFile);
+                f.createNewFile();
+                file = new Formatter(f);
+                List<String> list = null;
+                try {
+                    java.nio.file.Path tmp = java.nio.file.Path.of("tmp_coords.txt");
+                    list = Files.readAllLines(tmp);
+                } catch (IOException e) {}
+                List<String[]> newList = list.stream().map(s -> s.split(":")).toList();
+                for (int i = 0; i < n; i++) {
+                    BaseProtocol protocol = (BaseProtocol) Network.get(i).getProtocol(pid);
+                    for (Edge e: protocol.getGraph()) {
+                        if (e.source != i) continue;
+                        Files.write(Path.of(edgeFile), String.format("%s %s %d\n", newList.get((int)e.source)[1], newList.get((int)e.source)[2], e.source).getBytes(), StandardOpenOption.APPEND);
+                        Files.write(Path.of(edgeFile), String.format("%s %s %d\n", newList.get((int)e.destination)[1], newList.get((int)e.destination)[2], e.destination).getBytes(), StandardOpenOption.APPEND);
+                        Files.write(Path.of(edgeFile), ("\n").getBytes(), StandardOpenOption.APPEND);
                     }
                 }
-                drawn[l++] = (int)Network.get(i).getID();
+                file.close();
             }
-            file.format(" }");
-            file.close();
-
         } catch (Exception ex) { ex.printStackTrace(); }
         System.out.println("done.");
 		
 		return false;
 	}
-
 }

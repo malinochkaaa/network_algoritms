@@ -2,16 +2,16 @@
 random.seed 1234567880
 
 # Network size
-network.size 16
+network.size 500
 
 # Simulation end time
-simulation.cycles 10
+simulation.cycles 5
 
 # Linkable
 protocol.link IdleProtocol
 
 # Wiring the network
-init.rnd WireKOut
+init.rnd WireRegRootedTree
 init.rnd.protocol link
 init.rnd.k 2
 init.rnd.undir
@@ -24,11 +24,11 @@ init.ci.linkable link
 include.init rnd ci
 
 # Protocol
-protocol.dvp DistanceVectorProtocol
+protocol.dvp org.example.algorithms.Greedy
 protocol.dvp.linkable link
 
 # Observer
-control.do DVObserver
+control.do org.example.Observer
 control.do.protocol dvp
 
 # Graph Observer

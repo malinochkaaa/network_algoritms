@@ -52,7 +52,7 @@ public class Observer implements Control{
 			System.out.printf(" |%s\n    cost| ", "");
 			for(Path p : paths.values())
 				if(p.cost == Integer.MAX_VALUE)
-					System.out.printf(" X ," );
+					System.out.printf("  X ," );
 				else
 					System.out.printf("%4d,", p.cost );
 			System.out.printf(" |\n     via| ");

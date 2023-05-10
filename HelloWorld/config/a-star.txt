@@ -2,10 +2,10 @@
 random.seed 1234567880
 
 # Network size
-network.size 5
+network.size 500
 
 # Simulation end time
-simulation.cycles 10
+simulation.cycles 5
 
 # Linkable
 protocol.link IdleProtocol
@@ -24,11 +24,11 @@ init.ci.linkable link
 include.init rnd ci
 
 # Protocol
-protocol.dvp DistanceVectorProtocol
+protocol.dvp org.example.algorithms.AStar
 protocol.dvp.linkable link
 
 # Observer
-control.do DVObserver
+control.do org.example.Observer
 control.do.protocol dvp
 
 # Graph Observer
