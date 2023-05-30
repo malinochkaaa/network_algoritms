@@ -32,7 +32,6 @@ public abstract class BaseProtocol implements CDProtocol {
     /* current phase of the protocol */
     protected State phase;
 
-
     protected ArrayList<CustomNode> unavailableNodes = new ArrayList<>();
 
     /**
@@ -115,11 +114,9 @@ public abstract class BaseProtocol implements CDProtocol {
         /* Add neighbours - access neighbours in the Linkable */
         String filename = "tmp_coords.txt";
         File f = new File(filename);
-        float x = CDState.r.nextFloat()*500;
-        float y = CDState.r.nextFloat()*500;
         try {
             f.createNewFile();
-            Files.write(Paths.get(filename), String.format("%d:%f:%f\n", nodeId, x, y).getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(filename), String.format("%d:%f:%f\n", nodeId, ((IdleProtocolWithCoords)lnk).getX(), ((IdleProtocolWithCoords)lnk).getY()).getBytes(), StandardOpenOption.APPEND);
         } catch (IOException e) {}
 
         for (int i = 0; i < lnk.degree(); i++) {
@@ -246,7 +243,6 @@ public abstract class BaseProtocol implements CDProtocol {
         messagePrint(msg);
         ArrayList<Long> path = new ArrayList<>();
         int count = 0;
-        int sumWeight = 0;
         path.add(to);
         long pathLast = to;
         long prevInPath = paths.get(pathLast).predecessor;
@@ -255,7 +251,6 @@ public abstract class BaseProtocol implements CDProtocol {
                 if (edge.source == prevInPath && edge.destination == pathLast) {
                     edge.availableIn = weight;
                     edge.nodeIdAssosiated = from;
-                    sumWeight += edge.cost;
                     count++;
                 }
             }
@@ -310,7 +305,7 @@ public abstract class BaseProtocol implements CDProtocol {
         f = new File(filename);
         try {
             f.createNewFile();
-            Files.write(Paths.get(filename), String.format("%d:%d", count, sumWeight).getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(filename), (count + "\n").getBytes(), StandardOpenOption.APPEND);
         } catch (IOException e) {}
     }
 

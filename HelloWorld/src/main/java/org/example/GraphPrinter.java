@@ -68,7 +68,7 @@ public class GraphPrinter extends GraphObserver {
         int l=0, m = 0;
         System.out.println( "[" + CommonState.getTime() + "] drawing ... ");
         try {
-            if (CommonState.getTime() > 2) {
+            if (CommonState.getTime() > 1) {
                 int[] drawn = new int[n];
                 Date date = new Date(System.currentTimeMillis());
                 BaseProtocol baseProtocol = (BaseProtocol) Network.get(0).getProtocol(pid);
@@ -114,15 +114,7 @@ public class GraphPrinter extends GraphObserver {
                     drawn[l++] = (int) Network.get(i).getID();
                 }
                 file.format(" }");
-                /*file.close();
-                String graphFile = String.format("%s%s%03d_points.dat", outf, protocolStr, CommonState.getTime());
-                f = new File(graphFile);
-                f.createNewFile();
-                file = new Formatter(f);
-                for (long node = 0; node < n; node++) {
-                    file.format("%d %f %f\n", node, CDState.r.nextFloat()*500, CDState.r.nextFloat()*500);
-                }
-                file.close();*/
+                file.close();
                 String edgeFile = String.format("%s%s%03d_edges.dat", outf, protocolStr, CommonState.getTime());
                 f = new File(edgeFile);
                 f.createNewFile();

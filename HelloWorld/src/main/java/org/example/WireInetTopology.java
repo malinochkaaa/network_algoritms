@@ -1,4 +1,4 @@
-package org.example.inet;
+package org.example;
 
 import peersim.config.Configuration;
 import peersim.core.Network;
@@ -58,19 +58,14 @@ public class WireInetTopology extends WireGraph {
         }
     }
     private static double distance(Node new_node, Node old_node, int coordPid) {
-        double x1 = ((InetCoordinates) new_node.getProtocol(coordPid))
+        double x1 = ((IdleProtocolWithCoords) new_node.getProtocol(coordPid))
                 .getX();
-        double x2 = ((InetCoordinates) old_node.getProtocol(coordPid))
+        double x2 = ((IdleProtocolWithCoords) old_node.getProtocol(coordPid))
                 .getX();
-        double y1 = ((InetCoordinates) new_node.getProtocol(coordPid))
+        double y1 = ((IdleProtocolWithCoords) new_node.getProtocol(coordPid))
                 .getY();
-        double y2 = ((InetCoordinates) old_node.getProtocol(coordPid))
+        double y2 = ((IdleProtocolWithCoords) old_node.getProtocol(coordPid))
                 .getY();
-        if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1)
-            // NOTE: in release 1.0 the line above incorrectly contains
-            // |-s instead of ||. Use latest CVS version, or fix it by hand.
-            throw new RuntimeException(
-                    "Found un-initialized coordinate. Use e.g., InetInitializer class in the config file.");
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
 }

@@ -1,5 +1,6 @@
 package org.example.inet;
 
+import org.example.InetCoordinates;
 import peersim.config.Configuration;
 import peersim.core.Node;
 import peersim.graph.Graph;

@@ -2,7 +2,7 @@
 random.seed 1234567880
 
 # Network size
-network.size 500
+network.size 1000
 
 # Simulation end time
 simulation.cycles 5

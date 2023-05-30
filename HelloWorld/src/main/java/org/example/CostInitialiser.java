@@ -11,6 +11,7 @@
  */
 package org.example;
 
+import peersim.cdsim.CDState;
 import peersim.config.Configuration;
 import peersim.core.CommonState;
 import peersim.core.Linkable;
@@ -67,6 +68,13 @@ public class CostInitialiser implements peersim.core.Control {
 					initCcost[(int)peer.getID()][(int)node.getID()] = initCcost[(int)node.getID()][(int)peer.getID()];	
 				}
 			}
+		}
+		for(int i=0; i < size; i++) {
+			Node node = Network.get(i);
+			IdleProtocolWithCoords lnk = (IdleProtocolWithCoords) node.getProtocol(pid);
+
+			lnk.setX(CDState.r.nextFloat()*500);
+			lnk.setY(CDState.r.nextFloat()*500);
 		}
 		if(debug) {
 			System.out.printf("\n      ");				

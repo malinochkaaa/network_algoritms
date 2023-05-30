@@ -1,4 +1,4 @@
-package org.example.inet;
+package org.example;
 
 import peersim.core.Protocol;
 
